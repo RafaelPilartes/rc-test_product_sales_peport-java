@@ -1,52 +1,53 @@
 package com.mycompany.testpaperproductsalesq1;
 
 public class ProductSales implements IProduct {
-    public int TotalSales(int[][] productSales) {
-        int totalSales = 0;
-        for (int[] row : productSales) {
-            for (int sale : row) {
-                totalSales += sale;
+    
+    public int TotalSales(int[][] salesData) {
+        int total = 0;
+        for (int[] period : salesData) {
+            for (int saleAmount : period) {
+                total += saleAmount;
             }
         }
-        return totalSales;
+        return total;
     }
 
-    public double AverageSales(int[][] productSales) {
-        int currentCount = 0;
-        int totalSales = TotalSales(productSales);
+    public double AverageSales(int[][] salesData) {
+        int totalCount = 0;
+        int totalAmount = TotalSales(salesData);
 
-        for (int[] row : productSales) {
-            currentCount += row.length;
+        for (int[] period : salesData) {
+            totalCount += period.length;
         }
 
-        return (double) totalSales / currentCount;
+        return (double) totalAmount / totalCount;
     }
 
-    public int MaxSale(int[][] productSales) {
-        int maxSale = productSales[0][0];
+    public int MaxSale(int[][] salesData) {
+        int highestSale = salesData[0][0];
 
-        for (int[] row : productSales) {
-            for (int sale : row) {
-                if (sale > maxSale) {
-                    maxSale = sale;
+        for (int[] period : salesData) {
+            for (int saleAmount : period) {
+                if (saleAmount > highestSale) {
+                    highestSale = saleAmount;
                 }
             }
         }
 
-        return maxSale;
+        return highestSale;
     }
 
-    public int MinSale(int[][] productSales) {
-        int minSale = productSales[0][0];
+    public int MinSale(int[][] salesData) {
+        int lowestSale = salesData[0][0];
 
-        for (int[] row : productSales) {
-            for (int sale : row) {
-                if (sale < minSale) {
-                    minSale = sale;
+        for (int[] period : salesData) {
+            for (int saleAmount : period) {
+                if (saleAmount < lowestSale) {
+                    lowestSale = saleAmount;
                 }
             }
         }
 
-        return minSale;
+        return lowestSale;
     }
 }
