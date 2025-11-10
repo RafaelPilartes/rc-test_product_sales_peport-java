@@ -2,6 +2,7 @@ package com.mycompany.testpaperproductsalesq2;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -128,7 +129,8 @@ public class TestPaperProductSalesQ2 extends JFrame {
         int salesOverLimit = productSalesManager.GetSalesOverLimit();
         int salesUnderLimit = productSalesManager.GetSalesUnderLimit();
 
-        try (FileWriter writer = new FileWriter("Data.txt")) {
+        String filePath = System.getProperty("user.dir") + File.separator + "data.txt";
+        try (FileWriter writer = new FileWriter(filePath)) {
             writer.write("DATA LOG\n");
             writer.write("**************************\n");
             writer.write("Total Sales: " + totalSales + "\n");
